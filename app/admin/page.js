@@ -3,21 +3,21 @@
 import { useEffect, useState } from "react";
 
 export default function Admin() {
-  const [allowed, setAllowed] = useState(null);
+  const [authorized, setAuthorized] = useState(null);
 
   useEffect(() => {
-    const pass = prompt("Enter password");
+    const pass = window.prompt("Enter password");
 
-    if (pass === "@9angLESEYApPLE@9") {
-      setAllowed(true);
+    if (pass === "1234") {
+      setAuthorized(true);
     } else {
-      setAllowed(false);
+      setAuthorized(false);
     }
   }, []);
 
-  if (allowed === null) return <h1>Loading...</h1>;
+  if (authorized === null) return <p>Loading...</p>;
 
-  if (!allowed) return <h1>Access denied</h1>;
+  if (!authorized) return <h1>Access denied</h1>;
 
   return <h1>Welcome to admin</h1>;
 }
