@@ -17,6 +17,9 @@ export default function Admin() {
     }
   }, []);
 
+// add this anywhere
+console.log("force rebuild");
+
   if (authorized === null) return <p>Loading...</p>;
 
   if (!authorized) return <h1>Access denied</h1>;
