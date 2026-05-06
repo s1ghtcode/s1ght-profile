@@ -7,15 +7,17 @@ import { useEffect, useState } from "react";
 export default function Admin() {
   const [authorized, setAuthorized] = useState(null);
 
-  useEffect(() => {
-    const pass = window.prompt("Enter password");
+useEffect(() => {
+  if (typeof window === "undefined") return;
 
-    if (pass === "@9angLESEYApPLE@9") {
-      setAuthorized(true);
-    } else {
-      setAuthorized(false);
-    }
-  }, []);
+  const pass = window.prompt("Enter password");
+
+  if (pass === "@9angLESEYApPLE@9") {
+    setAuthorized(true);
+  } else {
+    setAuthorized(false);
+  }
+}, []);
 
 // add this anywhere
 console.log("force rebuild");
