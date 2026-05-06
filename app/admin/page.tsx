@@ -1,14 +1,13 @@
 "use client";
 
-export const dynamic = "force-dynamic";
-
 import { useEffect, useState } from "react";
 
+export const dynamic = "force-dynamic";
+
 export default function Admin() {
-  const [authorized, setAuthorized] = useState(null);
+  const [authorized, setAuthorized] = useState<boolean | null>(null);
 
   useEffect(() => {
-    // ✅ prevent server-side execution
     if (typeof window === "undefined") return;
 
     const pass = window.prompt("Enter password");
