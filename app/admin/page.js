@@ -8,7 +8,7 @@ export default function Admin() {
   useEffect(() => {
     const pass = window.prompt("Enter password");
 
-    if (pass === "@9angLESEYApPLE@9") {
+    if (pass === "1234") {
       setAuthorized(true);
     } else {
       setAuthorized(false);
