@@ -9,6 +9,7 @@ const data = rawData as {
   username: string;
   bio: string;
   team: string;
+  teamUrl: string;
   avatar: string;
   links: any[];
   partners: any[];
@@ -74,10 +75,21 @@ export default function Home() {
     <main className="min-h-screen bg-black text-white flex flex-col items-center p-6">
 
       {/* Profile */}
-      <img src={data.avatar} className="w-28 h-28 rounded-full border" />
-      <h1 className="text-3xl font-bold mt-4">{data.username}</h1>
-      <p className="text-gray-400">{data.bio}</p>
-      <p className="text-gray-500">{data.team}</p>
+      {/* Profile */}
+<img src={data.avatar} className="w-28 h-28 rounded-full border" />
+
+<h1 className="text-3xl font-bold mt-4">{data.username}</h1>
+
+<p className="text-gray-400">{data.bio}</p>
+
+<a
+  href={data.teamUrl}
+  target="_blank"
+  rel="noopener noreferrer"
+  className="text-gray-500 text-sm mt-1 hover:text-purple-400 transition"
+>
+  {data.team}
+</a>
 
       {/* ================= LINKS ================= */}
       <div className="mt-6 w-full max-w-4xl">
