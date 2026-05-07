@@ -22,18 +22,8 @@ export default function RootLayout({
         {/* MAIN CONTENT */}
         <main className="flex-1">{children}</main>
 
-        {/* FOOTER */}
-        <footer className="relative border-t border-white/10 py-6 text-center text-sm text-white/60">
-          
-          {/* Bottom-left logo (IMAGE) */}
-          <div className="absolute left-4 bottom-4">
-            <img
-              src="/logo.png"
-              alt="logo"
-              className="w-8 h-8 object-contain"
-            />
-          </div>
-
+        {/* FOOTER (NO LOGO) */}
+        <footer className="border-t border-white/10 py-6 text-center text-sm text-white/60">
           © 2026 s1ghtgg. All rights reserved.
         </footer>
       </body>
