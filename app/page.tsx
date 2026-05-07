@@ -99,39 +99,47 @@ export default function Home() {
         </div>
       </div>
 
-      {/* ================= PARTNERS ================= */}
-      <div className="mt-6 w-full max-w-4xl">
-        <h2 className="text-xl mb-4">Partners</h2>
+{/* ================= PARTNERS ================= */}
+<div className="mt-6 w-full max-w-4xl">
+  <h2 className="text-xl mb-4">Partners</h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          {data.partners.map((partner) => (
-            <a
-              key={partner.url}
-              href={partner.url}
-              target="_blank"
-              onClick={() => trackClick(partner.name, partner.url, "partner")}
-              className="group relative bg-gradient-to-br from-zinc-900 to-black border border-zinc-800 p-4 rounded-xl transition duration-300 hover:border-purple-500"
-              onMouseMove={(e) => {
-                const rect = e.currentTarget.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                e.currentTarget.style.setProperty("--x", `${x}px`);
-                e.currentTarget.style.setProperty("--y", `${y}px`);
-              }}
-            >
-              <div className="pointer-events-none absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition duration-300 bg-[radial-gradient(circle_at_var(--x)_var(--y),rgba(168,85,247,0.25),transparent_60%)]" />
+  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+    {data.partners.map((partner) => (
+      <a
+        key={partner.url}
+        href={partner.url}
+        target="_blank"
+        onClick={() => trackClick(partner.name, partner.url, "partner")}
+        className="group relative bg-gradient-to-br from-zinc-900 to-black border border-zinc-800 p-4 rounded-xl transition duration-300 hover:border-purple-500"
+        onMouseMove={(e) => {
+          const rect = e.currentTarget.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          e.currentTarget.style.setProperty("--x", `${x}px`);
+          e.currentTarget.style.setProperty("--y", `${y}px`);
+        }}
+      >
+        {/* Glow effect */}
+        <div className="pointer-events-none absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition duration-300 bg-[radial-gradient(circle_at_var(--x)_var(--y),rgba(168,85,247,0.25),transparent_60%)]" />
 
-              <div className="relative z-10 flex items-center gap-3">
-                <img
-                      src={partner.logo ? partner.logo : getFaviconFromUrl(partner.url)}
-                      className="w-5 h-5 object-contain grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition"
-                    />
-                <span className="font-medium">{partner.name}</span>
-              </div>
-            </a>
-          ))}
+        {/* Content */}
+        <div className="relative z-10 flex items-center gap-3">
+          
+          {/* FIXED SIZE LOGO CONTAINER */}
+          <div className="w-6 h-6 flex items-center justify-center">
+            <img
+              src={partner.logo ? partner.logo : getFaviconFromUrl(partner.url)}
+              className="max-w-full max-h-full object-contain grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition"
+              alt={partner.name}
+            />
+          </div>
+
+          <span className="font-medium">{partner.name}</span>
         </div>
-      </div>
+      </a>
+    ))}
+  </div>
+</div>
 
       {/* ================= SETUP ================= */}
       <div className="mt-8 w-full max-w-4xl">
