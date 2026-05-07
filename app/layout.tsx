@@ -5,10 +5,10 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "s1ghtgg Portfolio",
+  title: "s1ght's loadout",
   description: "Peripheral reviewer | multi FPS aimer",
   openGraph: {
-    title: "s1ghtgg Portfolio",
+    title: "s1ght's loadout",
     description: "Peripheral reviewer | multi FPS aimer",
     url: "https://s1ght.cc",               // Update to your live website
     siteName: "s1ghtgg",
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "s1ghtgg Portfolio",
+    title: "s1ght's loadout",
     description: "Peripheral reviewer | multi FPS aimer",
     images: ["https://s1ght.cc/og-image.png"], // Twitter needs absolute URLs
     creator: "@s1ghtgg",
