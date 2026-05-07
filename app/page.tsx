@@ -7,6 +7,7 @@ import data from "../data.json";
 import { FaChair, FaMouse, FaKeyboard, FaHeadphones, FaTwitch, FaYoutube, FaDiscord, FaTwitter, FaSteam, FaSpotify, FaFileAlt, FaTiktok } from "react-icons/fa";
 import { MdMonitor } from "react-icons/md";
 import { BsSquareFill } from "react-icons/bs";
+import { FaW } from "react-icons/fa6";
 
 /* ================= TRACKING ================= */
 function trackClick(name: string, url: string, type: string) {
@@ -65,6 +66,7 @@ export default function Home() {
       <img src={data.avatar} className="w-28 h-28 rounded-full border" />
       <h1 className="text-3xl font-bold mt-4">{data.username}</h1>
       <p className="text-gray-400">{data.bio}</p>
+      <p className="text-gray-500 text-sm mt-1">@emoAimers</p>
 
       {/* ================= LINKS ================= */}
       <div className="mt-6 w-full max-w-4xl">
