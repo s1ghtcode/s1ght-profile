@@ -15,8 +15,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: "https://s1ght.cc/og-image.png", // Your logo/banner URL
-        width: 900,
-        height: 900,
+        width: 400,
+        height: 400,
       },
     ],
     locale: "en_US",
