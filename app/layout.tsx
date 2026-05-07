@@ -5,8 +5,30 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "s1ght's loadout",
-  description: "peripheral reviewer | multi fps aimer",
+  title: "s1ghtgg Portfolio",
+  description: "Peripheral reviewer | multi FPS aimer",
+  openGraph: {
+    title: "s1ghtgg Portfolio",
+    description: "Peripheral reviewer | multi FPS aimer",
+    url: "https://yourdomain.com",        // Your website URL
+    siteName: "s1ghtgg",
+    images: [
+      {
+        url: "/og-image.png",             // Put your logo or banner here
+        width: 1200,
+        height: 630,
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "s1ghtgg Portfolio",
+    description: "Peripheral reviewer | multi FPS aimer",
+    images: ["/og-image.png"],
+    creator: "@s1ghtgg",                   // Your Twitter handle
+  },
 };
 
 export default function RootLayout({
