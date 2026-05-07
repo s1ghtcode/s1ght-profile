@@ -25,11 +25,13 @@ export default function RootLayout({
         {/* FOOTER */}
         <footer className="relative border-t border-white/10 py-6 text-center text-sm text-white/60">
           
-          {/* Bottom-left logo */}
+          {/* Bottom-left logo (IMAGE) */}
           <div className="absolute left-4 bottom-4">
-            <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-xs font-semibold">
-              N
-            </div>
+            <img
+              src="/logo.png"
+              alt="logo"
+              className="w-8 h-8 object-contain"
+            />
           </div>
 
           © 2026 s1ghtgg. All rights reserved.
