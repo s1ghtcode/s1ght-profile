@@ -5,7 +5,7 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "s1ght profile",
+  title: "s1ght's loadout",
   description: "peripheral reviewer | multi fps aimer",
 };
 
