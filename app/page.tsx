@@ -123,9 +123,9 @@ export default function Home() {
 
               <div className="relative z-10 flex items-center gap-3">
                 <img
-                  src={partner.logo ? partner.logo : getFaviconFromUrl(partner.url)}
-                  className="w-5 h-5 rounded-sm object-contain"
-                />
+                      src={partner.logo ? partner.logo : getFaviconFromUrl(partner.url)}
+                      className="w-5 h-5 object-contain grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition"
+                    />
                 <span className="font-medium">{partner.name}</span>
               </div>
             </a>
