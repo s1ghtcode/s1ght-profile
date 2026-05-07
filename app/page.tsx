@@ -75,7 +75,6 @@ export default function Home() {
     <main className="min-h-screen bg-black text-white flex flex-col items-center p-6">
 
       {/* Profile */}
-      {/* Profile */}
 <img src={data.avatar} className="w-28 h-28 rounded-full border" />
 
 <h1 className="text-3xl font-bold mt-4">{data.username}</h1>
@@ -83,7 +82,7 @@ export default function Home() {
 <p className="text-gray-400">{data.bio}</p>
 
 <a
-  href={data.teamUrl}
+  href="https://twitter.com/emoAimers"
   target="_blank"
   rel="noopener noreferrer"
   className="text-gray-500 text-sm mt-1 hover:text-purple-400 transition"
