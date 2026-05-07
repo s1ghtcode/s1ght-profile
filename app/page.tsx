@@ -3,7 +3,18 @@
 console.log("SUPABASE URL:", process.env.NEXT_PUBLIC_SUPABASE_URL);
 
 import React from "react";
-import data from "../data.json";
+import rawData from "../data.json";
+
+const data = rawData as {
+  username: string;
+  bio: string;
+  team: string;
+  avatar: string;
+  links: any[];
+  partners: any[];
+  setup: any[];
+  pcSpecs: any[];
+};
 import { FaChair, FaMouse, FaKeyboard, FaHeadphones, FaTwitch, FaYoutube, FaDiscord, FaTwitter, FaSteam, FaSpotify, FaFileAlt, FaTiktok } from "react-icons/fa";
 import { MdMonitor } from "react-icons/md";
 import { BsSquareFill } from "react-icons/bs";
@@ -66,7 +77,7 @@ export default function Home() {
       <img src={data.avatar} className="w-28 h-28 rounded-full border" />
       <h1 className="text-3xl font-bold mt-4">{data.username}</h1>
       <p className="text-gray-400">{data.bio}</p>
-      <p className="text-gray-500 text-sm mt-1">@emoAimers</p>
+      <p className="text-gray-500">{data.team}</p>
 
       {/* ================= LINKS ================= */}
       <div className="mt-6 w-full max-w-4xl">
