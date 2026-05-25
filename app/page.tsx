@@ -10,6 +10,8 @@ const data = rawData as {
   bio: string;
   team: string;
   teamUrl: string;
+  team2: string;
+  team2Url: string;
   avatar: string;
   links: any[];
   partners: any[];
@@ -88,6 +90,15 @@ export default function Home() {
   className="text-gray-500 text-sm mt-1 hover:text-purple-400 transition"
 >
   {data.team}
+</a>
+
+<a
+  href="https://twitter.com/aimcore_hq"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="text-gray-500 text-sm mt-1 hover:text-red-400 transition"
+>
+  {data.team2}
 </a>
 
       {/* ================= LINKS ================= */}
