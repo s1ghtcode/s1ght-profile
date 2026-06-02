@@ -42,6 +42,11 @@
     "name": "ATK 5% off",
     "url": "https://www.atk.store/?ref=SGHT",
     "logo": "/logos/atk.png"
+  },
+  {
+    "name": "Lamzu",
+    "url": "https://lamzu.com/s1ght",
+    "logo": "/logos/lamzu.png"
   }
 ],
 
@@ -54,9 +59,9 @@
   },
   {
     "type": "mouse",
-    "name": "Razer Viper V4 Pro",
+    "name": "Logitech PRO X2 SUPERSTRIKE",
     "details": "White | Wallhack PTFE Dots Silent | Lizard Skin",
-    "url": "https://www.razer.com/gaming-mice/razer-viper-v4-pro"
+    "url": "https://www.logitechg.com/en-gb/shop/p/pro-x2-superstrike-mouse"
   },
   {
     "type": "mousepad",
