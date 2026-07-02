@@ -52,6 +52,11 @@
     "name": "Soku s1ght 10% off",
     "url": "https://www.soku.gg/",
     "logo": "/logos/soku.png"
+  },
+  {
+    "name": "Pulsar 5% off",
+    "url": "https://www.pulsar.gg/?ref=s1ght",
+    "logo": "/logos/pulsar.png"
   }
 ],
 
