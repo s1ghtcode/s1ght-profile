@@ -19,7 +19,7 @@
 
 "partners": [
   {
-    "name": "Wallhack 10%",
+    "name": "Wallhack 5%",
     "url": "https://wallhack.com/S1GHT",
     "logo": "/logos/wallhack.png"
   },
@@ -63,15 +63,15 @@
   "setup": [
   {
     "type": "mouse",
-    "name": "Logitech Superlight 2c",
-    "details": "Pink | X-Raypad Jade Pure Speed | Lizard Skin",
-    "url": "https://www.amazon.co.uk/Logitech-SUPERLIGHT-wireless-pro-grade-programmable/dp/B0FLF9KQ97/ref=sr_1_4?sr=8-4"
-  },
-  {
-    "type": "mouse",
     "name": "WLMOUSE Beast G Small",
     "details": "Purple | X-Raypad Jade Pure Speed | Lizard Skin",
     "url": "https://www.wlmouse.com/en-wl/products/beastg"
+  },
+  {
+    "type": "mouse",
+    "name": "Endgame Gear OP1 8K",
+    "details": "White | X-Raypad Jade Pure Speed | Lizard Skin",
+    "url": "https://www.endgamegear.co.uk/en-gb/gaming-mice/op1-8k-v2?attribute%5Bcolor%5D=White"
   },
   {
     "type": "mousepad",
