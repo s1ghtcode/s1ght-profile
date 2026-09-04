@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     siteName: "s1ghtgg",
     images: [
       {
-        url: "https://s1ght.cc/og-image.png",
+        url: "https://s1ght.cc/profilelink.png",
         width: 400,
         height: 400,
       },
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "s1ght's loadout",
     description: "Peripheral reviewer | multi FPS aimer",
-    images: ["https://s1ght.cc/og-image.png"],
+    images: ["https://s1ght.cc/profilelink.png"],
     creator: "@s1ghtgg",
   },
 };
@@ -57,7 +57,7 @@ export default function RootLayout({
         <meta name="description" content="Peripheral reviewer | multi FPS aimer" />
         <meta property="og:title" content="s1ght's loadout" />
         <meta property="og:description" content="Peripheral reviewer | multi FPS aimer" />
-        <meta property="og:image" content="https://s1ght.cc/og-image.png" />
+        <meta property="og:image" content="https://s1ght.cc/profilelink.png" />
         <meta property="og:url" content="https://s1ght.cc" />
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="s1ghtgg" />
@@ -65,7 +65,7 @@ export default function RootLayout({
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="s1ght's loadout" />
         <meta name="twitter:description" content="Peripheral reviewer | multi FPS aimer" />
-        <meta name="twitter:image" content="https://s1ght.cc/og-image.png" />
+        <meta name="twitter:image" content="https://s1ght.cc/profilelink.png" />
         <meta name="twitter:creator" content="@s1ghtgg" />
       </head>
 
