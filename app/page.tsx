@@ -13,6 +13,7 @@ const data = rawData as {
   team2: string;
   team2Url: string;
   avatar: string;
+  gameSettings: { label: string; value: string }[];
   links: any[];
   partners: any[];
   setup: any[];
@@ -100,6 +101,36 @@ export default function Home() {
 >
   {data.team2}
 </a>
+
+      {/* ================= GAME SETTINGS ================= */}
+      <div className="mt-6 w-full max-w-4xl">
+        <h2 className="text-xl mb-4">In-Game Settings</h2>
+
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+          {data.gameSettings.map((setting) => (
+            <div
+              key={setting.label}
+              className="group relative bg-gradient-to-br from-zinc-900 to-black border border-zinc-800 p-4 rounded-xl transition duration-300 hover:border-purple-500"
+              onMouseMove={(e) => {
+                const rect = e.currentTarget.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                e.currentTarget.style.setProperty("--x", `${x}px`);
+                e.currentTarget.style.setProperty("--y", `${y}px`);
+              }}
+            >
+              <div className="pointer-events-none absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition duration-300 bg-[radial-gradient(circle_at_var(--x)_var(--y),rgba(168,85,247,0.25),transparent_60%)]" />
+
+              <div className="relative z-10">
+                <span className="text-xs text-gray-400 uppercase">
+                  {setting.label}
+                </span>
+                <h3 className="font-semibold text-lg mt-1">{setting.value}</h3>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
 
       {/* ================= LINKS ================= */}
       <div className="mt-6 w-full max-w-4xl">

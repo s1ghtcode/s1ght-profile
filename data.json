@@ -6,6 +6,15 @@
   "team2": "@aimcore_hq",
   "team2Url": "https://twitter.com/aimcore_hq",
   "avatar": "profile.png",
+  
+  "gameSettings": [
+    { "label": "Sens range (cm/360)", "value": "30–34" },
+    { "label": "DPI", "value": "1600" },
+    { "label": "Polling (Hz)", "value": "1000" },
+    { "label": "Resolution", "value": "2304×1440" },
+    { "label": "FOV", "value": "120" },
+    { "label": "Grip", "value": "Fingertip" }
+  ],
   "links": [
     { "title": "Twitch", "url": "https://twitch.tv/s1ghtgg" },
     { "title": "Twitter", "url": "https://twitter.com/s1ghtgg" },
