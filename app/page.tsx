@@ -1,7 +1,20 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import rawData from "../data.json";
+
+/* ================= PERIPHERAL TYPES ================= */
+type Setting = { label: string; value: string };
+type DevicePage = {
+  name: string;
+  settings: Setting[];
+  subsections?: { title: string; settings: Setting[] }[];
+};
+type PeripheralDevice = DevicePage & {
+  type: string;
+  size: "large" | "small" | "wide";
+  alternates?: DevicePage[];
+};
 
 const data = rawData as {
   username: string;
@@ -15,22 +28,14 @@ const data = rawData as {
   links: any[];
   partners: any[];
   setup: any[];
-  peripheralSettings: {
-    type: string;
-    name: string;
-    size: "large" | "small" | "wide";
-    settings: { label: string; value: string }[];
-    subsections?: {
-      title: string;
-      settings: { label: string; value: string }[];
-    }[];
-  }[];
+  peripheralSettings: PeripheralDevice[];
   pcSpecs: any[];
 };
 import { FaChair, FaMouse, FaKeyboard, FaHeadphones, FaTwitch, FaYoutube, FaDiscord, FaTwitter, FaSteam, FaSpotify, FaFileAlt, FaTiktok } from "react-icons/fa";
 import { MdMonitor } from "react-icons/md";
 import { BsSquareFill } from "react-icons/bs";
 import { FaW } from "react-icons/fa6";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 /* ================= HELPERS ================= */
 function getFaviconFromUrl(url: string) {
@@ -63,6 +68,115 @@ const setupIconMap: Record<string, React.ReactNode> = {
   "monitor arm": <MdMonitor />,
   chair: <FaChair />,
 };
+
+/* ================= PERIPHERAL CARD ================= */
+const sizeClasses = {
+  large: "sm:col-span-2 lg:row-span-2 min-h-[16rem]",
+  small: "min-h-[10rem]",
+  wide: "sm:col-span-2 min-h-[10rem]",
+};
+
+function SettingRows({ settings }: { settings: Setting[] }) {
+  return (
+    <div className="space-y-2">
+      {settings.map((setting) => (
+        <div
+          key={setting.label}
+          className="flex justify-between items-center gap-4 text-xs border-t border-zinc-800 pt-2"
+        >
+          <span className="text-gray-500">{setting.label}</span>
+          <span className="font-medium text-right break-all">{setting.value}</span>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function PeripheralCard({ device }: { device: PeripheralDevice }) {
+  const pages: DevicePage[] = [device, ...(device.alternates ?? [])];
+  const [index, setIndex] = useState(0);
+  const page = pages[index];
+  const multiple = pages.length > 1;
+
+  const go = (step: number) =>
+    setIndex((i) => (i + step + pages.length) % pages.length);
+
+  return (
+    <div className={`relative ${sizeClasses[device.size]}`}>
+      <div
+        className="group relative h-full bg-gradient-to-br from-zinc-900 to-black border border-zinc-800 p-4 rounded-xl transition duration-300 hover:border-purple-500"
+        onMouseMove={(e) => {
+          const rect = e.currentTarget.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          e.currentTarget.style.setProperty("--x", `${x}px`);
+          e.currentTarget.style.setProperty("--y", `${y}px`);
+        }}
+      >
+        <div className="pointer-events-none absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition duration-300 bg-[radial-gradient(circle_at_var(--x)_var(--y),rgba(168,85,247,0.25),transparent_60%)]" />
+
+        <div className="relative z-10">
+          <div className="flex items-center justify-between gap-2 mb-4">
+            {multiple ? (
+              <button
+                onClick={() => go(-1)}
+                aria-label="Previous"
+                className="text-gray-500 hover:text-purple-400 transition p-1"
+              >
+                <FaChevronLeft size={12} />
+              </button>
+            ) : (
+              <span />
+            )}
+
+            <h3 className="font-semibold text-center flex items-center justify-center gap-2">
+              <span className="text-gray-400 text-sm">{setupIconMap[device.type]}</span>
+              {page.name}
+            </h3>
+
+            {multiple ? (
+              <button
+                onClick={() => go(1)}
+                aria-label="Next"
+                className="text-gray-500 hover:text-purple-400 transition p-1"
+              >
+                <FaChevronRight size={12} />
+              </button>
+            ) : (
+              <span />
+            )}
+          </div>
+
+          <SettingRows settings={page.settings} />
+
+          {page.subsections?.map((sub) => (
+            <div key={sub.title} className="mt-5">
+              <h4 className="text-xs text-purple-400 uppercase tracking-wide mb-2">
+                {sub.title}
+              </h4>
+              <SettingRows settings={sub.settings} />
+            </div>
+          ))}
+
+          {multiple && (
+            <div className="flex justify-center gap-1.5 mt-4">
+              {pages.map((p, i) => (
+                <button
+                  key={p.name}
+                  onClick={() => setIndex(i)}
+                  aria-label={p.name}
+                  className={`h-1.5 rounded-full transition-all ${
+                    i === index ? "w-4 bg-purple-500" : "w-1.5 bg-zinc-700 hover:bg-zinc-500"
+                  }`}
+                />
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
 
 /* ================= PAGE ================= */
 export default function Home() {
@@ -245,67 +359,9 @@ export default function Home() {
         <h2 className="text-xl mb-4">Peripheral Settings</h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {data.peripheralSettings.map((device) => {
-            const sizeClass = {
-              large: "sm:col-span-2 lg:row-span-2 min-h-[16rem]",
-              small: "min-h-[10rem]",
-              wide: "sm:col-span-2 min-h-[10rem]",
-            }[device.size];
-
-            return (
-              <div
-                key={device.name}
-                className={`group relative bg-gradient-to-br from-zinc-900 to-black border border-zinc-800 p-4 rounded-xl transition duration-300 hover:border-purple-500 ${sizeClass}`}
-                onMouseMove={(e) => {
-                  const rect = e.currentTarget.getBoundingClientRect();
-                  const x = e.clientX - rect.left;
-                  const y = e.clientY - rect.top;
-                  e.currentTarget.style.setProperty("--x", `${x}px`);
-                  e.currentTarget.style.setProperty("--y", `${y}px`);
-                }}
-              >
-                <div className="pointer-events-none absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition duration-300 bg-[radial-gradient(circle_at_var(--x)_var(--y),rgba(168,85,247,0.25),transparent_60%)]" />
-
-                <div className="relative z-10">
-                  <h3 className="font-semibold text-center flex items-center justify-center gap-2 mb-4">
-                    <span className="text-gray-400 text-sm">{setupIconMap[device.type]}</span>
-                    {device.name}
-                  </h3>
-
-                  <div className="space-y-2">
-                    {device.settings.map((setting) => (
-                      <div
-                        key={setting.label}
-                        className="flex justify-between items-center gap-4 text-xs border-t border-zinc-800 pt-2"
-                      >
-                        <span className="text-gray-500">{setting.label}</span>
-                        <span className="font-medium text-right break-all">{setting.value}</span>
-                      </div>
-                    ))}
-                  </div>
-
-                  {device.subsections?.map((sub) => (
-                    <div key={sub.title} className="mt-5">
-                      <h4 className="text-xs text-purple-400 uppercase tracking-wide mb-2">
-                        {sub.title}
-                      </h4>
-                      <div className="space-y-2">
-                        {sub.settings.map((setting) => (
-                          <div
-                            key={setting.label}
-                            className="flex justify-between items-center gap-4 text-xs border-t border-zinc-800 pt-2"
-                          >
-                            <span className="text-gray-500">{setting.label}</span>
-                            <span className="font-medium text-right break-all">{setting.value}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            );
-          })}
+          {data.peripheralSettings.map((device) => (
+            <PeripheralCard key={device.name} device={device} />
+          ))}
         </div>
       </div>
 

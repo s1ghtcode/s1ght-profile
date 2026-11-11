@@ -180,6 +180,17 @@
         { "label": "Motion Sync", "value": "On" },
         { "label": "BHOP Mode", "value": "Both" },
         { "label": "Passthrough Window", "value": "500ms" }
+      ],
+      "alternates": [
+        {
+          "name": "WLMouse",
+          "settings": [
+            { "label": "LOD", "value": "1mm" },
+            { "label": "High Speed Mode", "value": "On" },
+            { "label": "Button Combination", "value": "On" },
+            { "label": "Turbo Mode", "value": "On" }
+          ]
+        }
       ]
     },
     {
