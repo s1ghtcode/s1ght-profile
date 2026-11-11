@@ -1,7 +1,5 @@
 "use client";
 
-console.log("SUPABASE URL:", process.env.NEXT_PUBLIC_SUPABASE_URL);
-
 import React from "react";
 import rawData from "../data.json";
 
@@ -17,28 +15,18 @@ const data = rawData as {
   links: any[];
   partners: any[];
   setup: any[];
+  peripheralSettings: {
+    type: string;
+    name: string;
+    size: "large" | "small" | "wide";
+    settings: { label: string; value: string }[];
+  }[];
   pcSpecs: any[];
 };
 import { FaChair, FaMouse, FaKeyboard, FaHeadphones, FaTwitch, FaYoutube, FaDiscord, FaTwitter, FaSteam, FaSpotify, FaFileAlt, FaTiktok } from "react-icons/fa";
 import { MdMonitor } from "react-icons/md";
 import { BsSquareFill } from "react-icons/bs";
 import { FaW } from "react-icons/fa6";
-
-/* ================= TRACKING ================= */
-function trackClick(name: string, url: string, type: string) {
-  fetch("/api/track", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      name,
-      url,
-      type,
-      time: new Date().toISOString(),
-    }),
-  });
-}
 
 /* ================= HELPERS ================= */
 function getFaviconFromUrl(url: string) {
@@ -142,7 +130,6 @@ export default function Home() {
               key={link.url}
               href={link.url}
               target="_blank"
-              onClick={() => trackClick(link.title, link.url, "link")}
               className="group relative bg-gradient-to-br from-zinc-900 to-black border border-zinc-800 p-4 rounded-xl transition duration-300"
               onMouseMove={(e) => {
                 const rect = e.currentTarget.getBoundingClientRect();
@@ -175,7 +162,6 @@ export default function Home() {
         key={partner.url}
         href={partner.url}
         target="_blank"
-        onClick={() => trackClick(partner.name, partner.url, "partner")}
         className="group relative bg-gradient-to-br from-zinc-900 to-black border border-zinc-800 p-4 rounded-xl transition duration-300 hover:border-purple-500"
         onMouseMove={(e) => {
           const rect = e.currentTarget.getBoundingClientRect();
@@ -221,7 +207,6 @@ export default function Home() {
                 {...(item.url && {
                   href: item.url,
                   target: "_blank",
-                  onClick: () => trackClick(item.name, item.url, "setup"),
                 })}
                 className="group relative bg-gradient-to-br from-zinc-900 to-black border border-zinc-800 p-4 rounded-xl transition duration-300 hover:border-purple-500"
                 onMouseMove={(e) => {
@@ -246,6 +231,56 @@ export default function Home() {
                   <p className="text-xs text-gray-500">{item.details}</p>
                 </div>
               </CardWrapper>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* ================= PERIPHERAL SETTINGS ================= */}
+      <div className="mt-8 w-full max-w-4xl">
+        <h2 className="text-xl mb-4">Peripheral Settings</h2>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {data.peripheralSettings.map((device) => {
+            const sizeClass = {
+              large: "sm:col-span-2 lg:row-span-2 min-h-[16rem]",
+              small: "min-h-[10rem]",
+              wide: "sm:col-span-2 min-h-[10rem]",
+            }[device.size];
+
+            return (
+              <div
+                key={device.name}
+                className={`group relative bg-gradient-to-br from-zinc-900 to-black border border-zinc-800 p-4 rounded-xl transition duration-300 hover:border-purple-500 ${sizeClass}`}
+                onMouseMove={(e) => {
+                  const rect = e.currentTarget.getBoundingClientRect();
+                  const x = e.clientX - rect.left;
+                  const y = e.clientY - rect.top;
+                  e.currentTarget.style.setProperty("--x", `${x}px`);
+                  e.currentTarget.style.setProperty("--y", `${y}px`);
+                }}
+              >
+                <div className="pointer-events-none absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition duration-300 bg-[radial-gradient(circle_at_var(--x)_var(--y),rgba(168,85,247,0.25),transparent_60%)]" />
+
+                <div className="relative z-10">
+                  <h3 className="font-semibold text-center flex items-center justify-center gap-2 mb-4">
+                    <span className="text-gray-400 text-sm">{setupIconMap[device.type]}</span>
+                    {device.name}
+                  </h3>
+
+                  <div className="space-y-2">
+                    {device.settings.map((setting) => (
+                      <div
+                        key={setting.label}
+                        className="flex justify-between items-center gap-4 text-xs border-t border-zinc-800 pt-2"
+                      >
+                        <span className="text-gray-500">{setting.label}</span>
+                        <span className="font-medium text-right break-all">{setting.value}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
             );
           })}
         </div>
