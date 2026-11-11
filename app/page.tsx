@@ -338,7 +338,7 @@ export default function Home() {
 
 {/* ================= PARTNERS ================= */}
 <div className="mt-6 w-full max-w-4xl">
-  <h2 className="text-xl mb-4">Partners</h2>
+  <h2 className="text-xl mb-4">Affiliates & Partners</h2>
 
   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
     {data.partners.map((partner) => (
