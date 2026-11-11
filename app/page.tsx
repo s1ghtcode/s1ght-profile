@@ -24,6 +24,7 @@ const data = rawData as {
   team2: string;
   team2Url: string;
   avatar: string;
+  contact: { email: string; subtitle: string };
   gameSettings: { label: string; value: string }[];
   links: any[];
   partners: any[];
@@ -35,7 +36,7 @@ import { FaChair, FaMouse, FaKeyboard, FaHeadphones, FaTwitch, FaYoutube, FaDisc
 import { MdMonitor } from "react-icons/md";
 import { BsSquareFill } from "react-icons/bs";
 import { FaW } from "react-icons/fa6";
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { FaChevronLeft, FaChevronRight, FaEnvelope } from "react-icons/fa";
 
 /* ================= HELPERS ================= */
 function getFaviconFromUrl(url: string) {
@@ -178,6 +179,68 @@ function PeripheralCard({ device }: { device: PeripheralDevice }) {
   );
 }
 
+/* ================= CONTACT CARD ================= */
+function ContactCard() {
+  const [copied, setCopied] = useState(false);
+
+  const copyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(data.contact.email);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      window.location.href = `mailto:${data.contact.email}`;
+    }
+  };
+
+  return (
+    <div className="mt-6 w-full max-w-4xl">
+      <h2 className="text-xl mb-4">Contact</h2>
+
+      <div
+        className="group relative bg-gradient-to-br from-zinc-900 to-black border border-zinc-800 p-5 rounded-xl transition duration-300 hover:border-purple-500"
+        onMouseMove={(e) => {
+          const rect = e.currentTarget.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          e.currentTarget.style.setProperty("--x", `${x}px`);
+          e.currentTarget.style.setProperty("--y", `${y}px`);
+        }}
+      >
+        <div className="pointer-events-none absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition duration-300 bg-[radial-gradient(circle_at_var(--x)_var(--y),rgba(168,85,247,0.25),transparent_60%)]" />
+
+        <div className="relative z-10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="flex items-center gap-4">
+            <div className="w-11 h-11 shrink-0 rounded-full bg-purple-500/10 border border-purple-500/40 flex items-center justify-center text-purple-400">
+              <FaEnvelope />
+            </div>
+            <div>
+              <h3 className="font-semibold">Contact me</h3>
+              <p className="text-xs text-gray-500 mt-0.5">{data.contact.subtitle}</p>
+              <p className="text-sm text-gray-300 mt-2 font-medium break-all">{data.contact.email}</p>
+            </div>
+          </div>
+
+          <div className="flex gap-2 shrink-0">
+            <button
+              onClick={copyEmail}
+              className="text-xs px-3 py-2 rounded-lg border border-zinc-700 text-gray-300 hover:border-purple-500 hover:text-white transition"
+            >
+              {copied ? "Copied!" : "Copy"}
+            </button>
+            <a
+              href={`mailto:${data.contact.email}`}
+              className="text-xs px-3 py-2 rounded-lg bg-purple-600 hover:bg-purple-500 font-medium transition"
+            >
+              Email me
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 /* ================= PAGE ================= */
 export default function Home() {
   return (
@@ -207,6 +270,9 @@ export default function Home() {
 >
   {data.team2}
 </a>
+
+      {/* ================= CONTACT ================= */}
+      <ContactCard />
 
       {/* ================= GAME SETTINGS ================= */}
       <div className="mt-6 w-full max-w-4xl">

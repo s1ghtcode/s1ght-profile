@@ -6,6 +6,10 @@
   "team2": "@aimcore_hq",
   "team2Url": "https://twitter.com/aimcore_hq",
   "avatar": "profile.png",
+  "contact": {
+    "email": "contact@s1ght.cc",
+    "subtitle": "Business enquiries, reviews & collabs"
+  },
   "gameSettings": [
     { "label": "Sens range (cm/360)", "value": "30–34" },
     { "label": "DPI", "value": "1600" },
