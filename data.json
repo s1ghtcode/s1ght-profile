@@ -29,56 +29,73 @@
     { "title": "3am with the boys (Tiktok comments go here)", "url": "https://open.spotify.com/playlist/24L7ul18A9RXwKfOZb5SX0?si=1157c343de064b94" }
   ],
 
-"partners/affiliates": [
+"partners & affiliates": [
   {
     "name": "Wallhack 5%",
     "url": "https://wallhack.com/S1GHT",
-    "logo": "/logos/wallhack.png"
+    "logo": "/logos/wallhack.png",
+    "code": "s1ght",
+    "discount": "5%"
   },
-   {
+  {
     "name": "GWolves $10 off",
     "url": "https://shop.g-wolves.com/?ref=s1ght",
-    "logo": "/logos/my-gwolves.png"
+    "logo": "/logos/my-gwolves.png",
+    "code": "s1ght",
+    "discount": "$10"
   },
-   {
-    "name": "WLMouse 2% off",
+  {
+    "name": "WLMouse 8% off link",
     "url": "https://www.wlmouse.com/s1ght",
-    "logo": "/logos/wlmouse.png"
+    "logo": "/logos/wlmouse.png",
+    "code": "SGHT",
+    "discount": "5%"
   },
   {
-    "name": "Mizu Works s1ght 5% off",
+    "name": "Mizu Works",
     "url": "https://mizuworks.com/",
-    "logo": "/logos/mizuworks.png"
+    "logo": "/logos/mizuworks.png",
+    "code": "s1ght",
+    "discount": "5%"
   },
   {
-    "name": "ATK 5% off",
+    "name": "ATK",
     "url": "https://www.atk.store/?ref=s1ght",
-    "logo": "/logos/atk.png"
+    "logo": "/logos/atk.png",
+    "code": "s1ght",
+    "discount": "5%"
   },
   {
     "name": "Lamzu",
-    "url": "https://lamzu.com/s1ght",
+    "url": "https://lamzu.com/pr9wnn",
     "logo": "/logos/lamzu.png"
   },
   {
-    "name": "Soku s1ght 10% off",
+    "name": "Soku",
     "url": "https://www.soku.gg/",
-    "logo": "/logos/soku.png"
+    "logo": "/logos/soku.png",
+    "code": "s1ght",
+    "discount": "10%"
   },
   {
     "name": "Pulsar 5% off",
     "url": "https://www.pulsar.gg/?ref=s1ght",
-    "logo": "/logos/pulsarsmall.png"
+    "logo": "/logos/pulsarsmall.png",
+    "discount": "5%"
   },
-    {
-    "name": "Elite5 5% off",
+  {
+    "name": "Elite5",
     "url": "https://elite5.co/S1GHT",
-    "logo": "/logos/e5.png"
+    "logo": "/logos/e5.png",
+    "code": "s1ght",
+    "discount": "5%"
   },
-    {
-    "name": "Clusters 10% off",
+  {
+    "name": "Clusters",
     "url": "https://theclustrs.com/S1GHT",
-    "logo": "/logos/clusters.png"
+    "logo": "/logos/clusters.png",
+    "code": "s1ght",
+    "discount": "10%"
   }
 ],
 

@@ -370,7 +370,19 @@ export default function Home() {
             />
           </div>
 
-          <span className="font-medium">{partner.name}</span>
+          <span className="font-medium mr-auto">{partner.name}</span>
+
+          {partner.code && (
+            <span className="text-[11px] text-gray-500 border border-zinc-800 rounded-md px-2 py-0.5 group-hover:border-purple-500/60 group-hover:text-purple-300 transition">
+              code <span className="font-semibold">{partner.code}</span>
+            </span>
+          )}
+
+          {partner.discount && (
+            <span className="text-[11px] font-semibold text-white bg-purple-600/80 rounded-md px-2 py-0.5 whitespace-nowrap">
+              {partner.discount} off
+            </span>
+          )}
         </div>
       </a>
     ))}
