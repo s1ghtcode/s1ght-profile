@@ -145,6 +145,16 @@
         { "label": "Saturation", "value": "60" },
         { "label": "Gamma", "value": "2.2" },
         { "label": "OLED Care", "value": "All On" }
+      ],
+      "subsections": [
+        {
+          "title": "Nvidia Colour Settings",
+          "settings": [
+            { "label": "Contrast", "value": "60%" },
+            { "label": "Gamma", "value": "1.6" },
+            { "label": "Digital Vibrance", "value": "70%" }
+          ]
+        }
       ]
     },
     {

@@ -20,6 +20,10 @@ const data = rawData as {
     name: string;
     size: "large" | "small" | "wide";
     settings: { label: string; value: string }[];
+    subsections?: {
+      title: string;
+      settings: { label: string; value: string }[];
+    }[];
   }[];
   pcSpecs: any[];
 };
@@ -279,6 +283,25 @@ export default function Home() {
                       </div>
                     ))}
                   </div>
+
+                  {device.subsections?.map((sub) => (
+                    <div key={sub.title} className="mt-5">
+                      <h4 className="text-xs text-purple-400 uppercase tracking-wide mb-2">
+                        {sub.title}
+                      </h4>
+                      <div className="space-y-2">
+                        {sub.settings.map((setting) => (
+                          <div
+                            key={setting.label}
+                            className="flex justify-between items-center gap-4 text-xs border-t border-zinc-800 pt-2"
+                          >
+                            <span className="text-gray-500">{setting.label}</span>
+                            <span className="font-medium text-right break-all">{setting.value}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
             );
