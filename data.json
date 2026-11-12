@@ -31,14 +31,14 @@
 
 "partners": [
   {
-    "name": "Wallhack 5%",
+    "name": "Wallhack",
     "url": "https://wallhack.com/S1GHT",
     "logo": "/logos/wallhack.png",
     "code": "s1ght",
     "discount": "5%"
   },
   {
-    "name": "GWolves $10 off",
+    "name": "GWolves",
     "url": "https://shop.g-wolves.com/?ref=s1ght",
     "logo": "/logos/my-gwolves.png",
     "code": "SGHT",
