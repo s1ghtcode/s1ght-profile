@@ -102,9 +102,9 @@
   "setup": [
   {
     "type": "mouse",
-    "name": "Finalmouse ULX Small",
-    "details": "Sakura | UNWS Pink Fox | Meow Gaming Gear 020",
-    "url": "https://finalmouse.com/products/ulx-sakura"
+    "name": "GWolves HSK Pro 2.0",
+    "details": "Pink | UNWS Pink Fox | Meow Gaming Gear 020",
+    "url": "https://shop.g-wolves.com/products/g-wolves-hsk-pro-4k?variant=41832828666053"
   },
   {
     "type": "mouse",
@@ -215,6 +215,13 @@
             { "label": "High Speed Mode", "value": "On" },
             { "label": "Button Combination", "value": "On" },
             { "label": "Turbo Mode", "value": "On" }
+          ]
+        },
+        {
+          "name": "HSK Pro 2.0",
+          "settings": [
+            { "label": "Lift Off", "value": "Middle" },
+            { "label": "Motion Sync", "value": "On" }
           ]
         }
       ]
